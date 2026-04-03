@@ -1589,7 +1589,7 @@
                 month: 'long',
                 day: 'numeric'
             });
-            var prompt = 'You are SkySnap AI. Today is ' + today + '. User wants: "' + query + '". Reply ONLY with valid JSON, no markdown, no backticks. Schema: {"summary":"string","from_city":"string","to_city":"string","flights":[{"airline":"string","flight_no":"string","depart_time":"HH:MM","arrive_time":"HH:MM","duration":"Xh Ym","stops":"string","price":number,"cabin":"string","tags":["string"],"insight":"string","is_best":boolean}]}. Return 4-5 realistic flights. Exactly one is_best:true. Tags: Cheapest, Non-stop, Best value, Fastest, Budget airline, Premium carrier, Late deal. If dates unclear assume next month.';
+            var prompt = 'You are SkySnap AI. Today is ' + today + '. User wants: "' + query + '". Reply ONLY with valid JSON, no markdown, no backticks. Schema: {"summary":"string","from_city":"string","to_city":"string","flights":[{"airline":"string","flight_no":"string","depart_time":"HH:MM","arrive_time":"HH:MM","duration":"Xh Ym","stops":"string","price":number,"cabin":"string","tags":["string"],"insight":"string","is_best":boolean}]}. Return 4-5 realistic flights. Exactly one is_best:true. Tags: Cheapest, Non-stop, Best value, Fastest, Budget airline, Premium carrier, Late deal. Always use these exact dates: today=' + todayISO + ', this weekend=' + nextWeekISO + ', next month=' + nextMonthISO + '. Never guess dates..';
 
             try {
                 var response = await fetch('https://api.anthropic.com/v1/messages', {
